@@ -1,0 +1,1 @@
+INSERT INTO businesses(fax_number) VALUES($1) WHERE business_id = $2;

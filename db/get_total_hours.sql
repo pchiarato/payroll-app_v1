@@ -1,0 +1,2 @@
+-- SELECT sum((EXTRACT(EPOCH FROM clockout::timestamp) - EXTRACT(EPOCH FROM clockin::timestamp))) from timetable where employee_id = $1
+SELECT sum((EXTRACT(EPOCH FROM clockout::timestamp) - EXTRACT(EPOCH FROM clockin::timestamp))) from timetable where  EXTRACT(week from clockin) = EXTRACT(week from current_date - 7) and employee_id = $1

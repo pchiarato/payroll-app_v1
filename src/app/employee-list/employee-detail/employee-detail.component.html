@@ -1,0 +1,63 @@
+<h1 class="page-header">EMPLOYEE'S DETAIL</h1>
+<div *ngIf="employee" class="panel panel-default">
+    <div class="panel-heading">
+        {{employee.fname | uppercase }} {{employee.lname | uppercase}}
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3 col-lg-3 logo-container">
+            <img class="moto-img" src="./assets/darthvader.jpeg">
+        </div>
+        <div class="col-md-9 col-lg-9">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Company Name:</td>
+                            <td>{{employee.business_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Hourly Rate:</td>
+                            <td>{{employee.hourly_rate | currency:'USD':true:'1.2-2'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Hire Date:</td>
+                            <td>{{dateFormater(employee.hire_date)}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth:</td>
+                            <td>{{dateFormater(employee.birth_date)}}</td>
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td>{{employee.gender | uppercase}}</td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td>{{employee.address}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>{{employee.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number:</td>
+                            <td>{{employee.phonenumber}}</td>
+                        </tr>
+                        <tr>
+                            <td>Account Type:</td>
+                            <td>{{employee.usertype}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <div class="button-group">
+            <app-employee-detail-modal></app-employee-detail-modal>
+            <button class="btn btn-danger">Terminate Employee</button>
+
+        </div>
+    </div>
+</div>

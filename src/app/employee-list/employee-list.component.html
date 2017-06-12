@@ -1,0 +1,22 @@
+<div class="row">
+
+    <div class="col-lg-12 col-md-12 col-xs 12 employee-list-container">
+        <router-outlet></router-outlet>
+        <div *ngFor="let employee of employees" class="col-md-3">
+            <div class="card">
+                <img src="./assets/darthvader.jpeg" alt="John" style="width:50%">
+                <div class="card-container">
+                    <h1 class="title"> {{employee.fname | uppercase}} {{employee.lname | uppercase}}</h1>
+                    <p>{{employee.email}}</p>
+                    <p>{{employee.business_name}}</p>
+                    <a><i class="fa fa-twitter"></i></a>
+                    <a><i class="fa fa-linkedin"></i></a>
+                    <a><i class="fa fa-facebook"></i></a>
+                    <p><button class="card-btn" (click)="onViewDetails(employee.employee_id)">View Details</button></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

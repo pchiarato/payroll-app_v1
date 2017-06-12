@@ -1,0 +1,1 @@
+INSERT INTO businesses(business_owner,business_name,business_type,phone_number,email,address,pass) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *

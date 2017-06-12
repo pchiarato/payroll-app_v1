@@ -1,0 +1,36 @@
+<nav class="navbar-fluid navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">Employee Portal</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li routerLinkActive="active"><a routerLink="/home" class="header-link">Home</a></li>
+            <li *ngIf="authService.loggedIn()" routerLinkActive="active"><a routerLink="/timecard" class="header-link">Time-Clock</a></li>
+            <li *ngIf="!authService.loggedIn()" routerLinkActive="active"><a routerLink="/register-business" class="header-link">Register Business</a></li>
+        </ul>
+
+        <!-- Date picker-->
+        <ul class="nav navbar-nav navbar-right">
+            <li routerLinkActive="active" [ngClass]="{'open':showDate}" class="dropdown">
+                <a style="cursor:pointer" (click)="showDate=!showDate">{{showDate? ' Hide ':'Show'}} Date<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="pull-right" style="display:inline-block; min-height:290px">
+                            <datepicker [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled" (click)="activeDateChange(dt)"></datepicker>
+
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- End of date picker -->
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="authService.loggedIn()" routerLinkActive="active"><a routerLink="employees" class="header-link">Employees</a></li>
+            <li *ngIf="authService.loggedIn()" routerLinkActive="active"><a routerLink="profile" class="header-link">Profile</a></li>
+            <li *ngIf="authService.loggedIn()" routerLinkActive="active"><a routerLink="register" class="header-link">Register Employee</a></li>
+            <li *ngIf="!authService.loggedIn()" routerLinkActive="active"><a routerLink="login" class="header-link">Login</a></li>
+            <li *ngIf="authService.loggedIn()"> <a style="cursor:pointer" (click)="onLogout()">Logout</a></li>
+
+        </ul>
+    </div>
+</nav>

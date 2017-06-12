@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-12 col-xs-12 timecard-container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="text-center panel-title">TIME CLOCK</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-responsive">
+                            <table class="table">
+                                <tr class="primary">
+                                    <th class="text-center t-size">
+
+                                        Time - In
+                                    </th>
+                                    <th class="text-center t-size">
+                                        Time - Out
+                                    </th>
+                                    <th class="text-center t-size">
+                                        Total Hours
+                                    </th>
+                                </tr>
+                                <tbody *ngIf="timeCardArray" class="table-striped">
+                                    <tr *ngFor="let time of timeCardArray;let i = index">
+                                        <td class="text-center">
+                                            {{time.clockin}}
+                                        </td>
+                                        <td *ngIf="time.clockout !== 'Invalid date'" class="text-center">
+                                            {{time.clockout}}
+                                        </td>
+                                        <td class="text-center">
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <button (click)="onClockin()" class="btn btn-primary">Clock In</button>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <button (click)="onClockout()" class="btn btn-danger">Clock Out</button>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

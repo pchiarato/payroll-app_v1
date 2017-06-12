@@ -1,0 +1,1 @@
+update timetable set clockout = $1 WHERE time_id = $2 RETURNING *

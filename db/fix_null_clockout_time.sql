@@ -1,0 +1,1 @@
+update timetable set clockout = $1 where time_id = $2;

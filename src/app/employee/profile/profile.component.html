@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 profile-container">
+        <div class="col-md-6">
+            <div *ngIf="user">
+                <h2 class="page-header">EMPLOYEE PROFILE</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Name: {{user.name | uppercase }} {{user.lastName | uppercase}}</li>
+                    <li class="list-group-item">Email: {{user.email}}</li>
+                    <li class="list-group-item">Account Type: {{user.usertype}}</li>
+                    <li *ngIf="userInfo" class="list-group-item">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <h1>Earnings</h1>
+                                </thead>
+                                <td>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Gross Wages: {{currencyFormater(userInfo.gross_pay)}} </li>
+                                        <li class="list-group-item">Regular pay: {{currencyFormater(userInfo.regular_pay)}}</li>
+                                        <li *ngIf="userInfo.overtime_pay !== '0.00'" class="list-group-item">Overtime: {{currencyFormater(userInfo.overtime_pay)}} </li>
+                                        <li class="list-group-item">Net: {{currencyFormater(userInfo.net_pay)}} </li>
+                                    </ul>
+                                </td>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div *ngIf="userInfo" class="table-responsive">
+                            <table>
+                                <thead>
+                                    <h1>Deductions</h1>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Social Security: {{currencyFormater(userInfo.social_security_amount)}} </li>
+                                            <li class="list-group-item">Medicare: {{currencyFormater(userInfo.medicare_amount)}} </li>
+                                            <li class="list-group-item">Federal Tax: {{currencyFormater(userInfo.federal_tax_amount)}} </li>
+                                            <li class="list-group-item">Total Deductions:{{currencyFormater(userInfo.tax_amount_paid)}} </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6" *ngIf="userInfo">
+            <h2 class="page-header">SUMMARY</h2>
+            <ul class="list-group">
+                <li *ngIf="week_ending" class="list-group-item">Current Hours Worked This Week: {{userInfo.total_hours_worked}} | Pay-Period: {{week_ending}}</li>
+                <li class="list-group-item">
+                    <div style="display: block">
+                        <canvas *ngIf="percentagesArray" baseChart [colors]="doughnutChartColors" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
+                        <!--(chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
