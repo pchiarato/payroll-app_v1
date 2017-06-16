@@ -60,7 +60,7 @@ export class TimeCardComponent implements OnInit {
             let currentTime = this.timeCardArray[this.timeCardArray.length -1];
             if (currentTime.clockout === null || currentTime.clockout == 'Invalid date') {
               this.clockIn = currentTime.clockin;
-              this.timeId = data[0].time_id;
+              this.timeId = data[data.length -1].time_id;
               this.isClockedIn = true;
             }
           } else {
@@ -72,7 +72,8 @@ export class TimeCardComponent implements OnInit {
 // method to clock in.
   onClockin(){
     if (!this.isClockedIn) {
-      this.clockIn = moment().format('YYYY-MM-DD HH:mm:ss');
+      this.clockIn = moment().utcOffset(-6).format('YYYY-MM-DD HH:mm:ss');
+      console.log('clockin ',this.clockIn)
       this.isClockedIn = true;
       this.timeCardService.clockIn(this.clockIn)
         .subscribe(
@@ -91,7 +92,9 @@ export class TimeCardComponent implements OnInit {
   //method to clockout.
     onClockout(){
         if (this.clockIn !== null && this.isClockedIn){
-          this.clockOut = moment().format('YYYY-MM-DD HH:mm:ss');
+          //let time = moment().format('YYYY-MM-DD HH:mm:ss')
+           this.clockOut = moment().utcOffset(-6).format('YYYY-MM-DD HH:mm:ss');
+          //moment().format('YYYY-MM-DD HH:mm:ss');
           this.isClockedIn = false;
           this.timeCardService.clockOut(this.clockOut, this.timeId)
             .subscribe(

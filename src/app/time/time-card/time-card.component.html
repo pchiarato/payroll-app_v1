@@ -38,7 +38,7 @@
                             </table>
                         </div>
                         <div class="col-md-6 text-center">
-                            <button (click)="onClockin()" class="btn btn-primary">Clock In</button>
+                            <button (click)="onClockin()" class="btn btn-primary" [disabled]="isClockedIn">Clock In</button>
                         </div>
                         <div class="col-md-6 text-center">
                             <button (click)="onClockout()" class="btn btn-danger">Clock Out</button>
