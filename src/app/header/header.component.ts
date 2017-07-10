@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
   
   activeDateChange(event) {
-    // console.log(event);
+    console.log('test',moment(event).utcOffset(0).format('YYYY-MM-DD'));
     this.timeService.getTimeCardByDate(moment(event).format('YYYY-MM-DD'));
     this.profileService.getPayrollByDate(moment(event).format('YYYY-MM-DD'));
       // .subscribe(
